@@ -1,4 +1,4 @@
-use rand::prelude::*;
+use rand::Rng;
 use std::io;
 
 
@@ -14,7 +14,6 @@ fn main() {
     io::stdin()
         .read_line(&mut guess)
         .expect("No se pudo leer la línea 💀");
-
 
     let mut guess_int: u32 = guess.trim().parse().expect("Error al convertir el número: ");
 
@@ -38,5 +37,4 @@ fn main() {
     }
 
     println!("¡Ganaste! 🎉 el número es {secret_number}");
-
 }
