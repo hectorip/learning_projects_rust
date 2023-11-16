@@ -1,6 +1,15 @@
 use rand::Rng;
 use std::io;
 
+// Ejercicio de Juego de adivinar el número
+// Temas que incluye:
+//  - Importación de crates y de biblioteca estándar
+//  - Manejo de errores
+//  - Mutabilidad y declaración de variables
+//  - Entrada y salida de datos
+//  - Generación de números aleatorios
+//  - Bucles
+
 
 fn main() {
     println!("¡Adivina el número (Entre 1 y 100)!");
