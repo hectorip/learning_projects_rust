@@ -9,7 +9,7 @@ use std::io;
 //  - Entrada y salida de datos
 //  - Generación de números aleatorios
 //  - Bucles
-
+//  - Conversión de tipos
 
 fn main() {
     println!("¡Adivina el número (Entre 1 y 100)!");
@@ -24,7 +24,7 @@ fn main() {
         .read_line(&mut guess)
         .expect("No se pudo leer la línea 💀");
 
-    let mut guess_int: u32 = guess.trim().parse().expect("Error al convertir el número: ");
+        let mut guess_int: u32 = guess.trim().parse().expect("Error al convertir el número: ");
 
     while guess_int != secret_number {
 
