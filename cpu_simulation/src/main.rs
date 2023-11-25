@@ -16,6 +16,7 @@ fn main() {
 }
 
 struct Instruction {
+
     // Instrucción
     // Operando 1
     // Operando 2
@@ -25,6 +26,8 @@ struct Instruction {
     operand2: String,
     operand3: String,
 }
+
+
 struct CPU {
     // Registros
     // Program Counter
