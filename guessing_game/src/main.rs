@@ -10,11 +10,13 @@ use std::io;
 //  - Generación de números aleatorios
 //  - Bucles
 //  - Conversión de tipos
+// -
+
 
 fn main() {
-    println!("¡Adivina el número (Entre 1 y 100)!");
+    println!("¡Adivina el número (1-100)!");
 
-    println!("Por favor ingresa tu número");
+    println!("Por favor ingresa tu número: ");
 
     let mut guess = String::new();
     let mut rng = rand::thread_rng();
