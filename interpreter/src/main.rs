@@ -6,6 +6,11 @@ fn main() {
 
     println!("Running the interpreter");
     println!("Program: {:?}", program);
+
+    // Parse
+    // Build AST for line
+    // Execute AST
+
 }
 
 // The program will be a list of instructions, each instruction will be a tuple
