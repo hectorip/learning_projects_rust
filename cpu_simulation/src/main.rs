@@ -37,7 +37,5 @@ struct CPU {
 fn cpu(programa: Vec<Instruction>) {
     // Inicializa el CPU y la RAM
     registros = {"Ra": 0, "Rb": 0, "Rc": 0, "Rd": 0, "Re": 0, "Rf": 0, "Rg": 0, "Rh": 0}
-
     // Imprime el estado de la CPU
-
 }
