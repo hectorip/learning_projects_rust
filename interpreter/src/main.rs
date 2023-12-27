@@ -6,7 +6,7 @@ fn main() {
 
     println!("Running the interpreter");
 
-    println!("Program: {:?}", program);
+    println!("Program: {:?}", program); // Print programs
     // Parse
     // Build AST for line
     // Execute AST
