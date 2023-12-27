@@ -6,5 +6,4 @@ fn main() {
     std::io::stdin()
         .read_line(&mut input)
         .expect("Error :(");
-    AsyncAwait::main();
 }

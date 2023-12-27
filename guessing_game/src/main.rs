@@ -12,23 +12,24 @@ use std::io;
 //  - Conversión de tipos
 
 fn main() {
-
     println!("¡Adivina el número (1-100)!");
 
     println!("Por favor ingresa tu número: ");
 
     let mut guess = String::new();
     let mut rng = rand::thread_rng();
-    let secret_number  = rng.gen_range(1..101);
+    let secret_number = rng.gen_range(1..101);
 
     io::stdin()
         .read_line(&mut guess)
         .expect("No se pudo leer la línea 💀");
 
-        let mut guess_int: u32 = guess.trim().parse().expect("Error al convertir el número: ");
+    let mut guess_int: u32 = guess
+        .trim()
+        .parse()
+        .expect("Error al convertir el número: ");
 
     while guess_int != secret_number {
-
         if guess_int > secret_number {
             println!("¡El número es menor!");
         } else {
@@ -43,7 +44,10 @@ fn main() {
             .read_line(&mut guess)
             .expect("No se pudo leer la línea 💀");
 
-        guess_int = guess.trim().parse().expect("Error al convertir el número: ");
+        guess_int = guess
+            .trim()
+            .parse()
+            .expect("Error al convertir el número: ");
     }
 
     println!("¡Ganaste! 🎉 el número es {secret_number}");
