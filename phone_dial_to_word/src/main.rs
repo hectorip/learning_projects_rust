@@ -18,6 +18,7 @@ fn main() {
         ("p", "7"), ("q", "7"), ("r", "7"), ("s", "7"),
         ("t", "8"), ("u", "8"), ("v", "8"),
         ("w", "9"), ("x", "9"), ("y", "9"), ("z", "9"),
+        (" ", " ")
     ]);
 
     for c in clean_input.chars() {
@@ -26,3 +27,5 @@ fn main() {
     }
     println!("{} => {}", input, output);
 }
+
+// cargo run --bin phone_dial_to_word "Hello World"
