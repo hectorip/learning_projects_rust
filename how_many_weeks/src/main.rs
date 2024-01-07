@@ -9,8 +9,7 @@ fn main() {
     calculate_weeks(&input);
 }
 
-fn calculate_weeks(date: &str) -> u32 {
-    let mut weeks = 0;
+fn calculate_weeks(from_date: NaiveDate, to_date: NaiveDate) -> u32 {
     // Get current date
     let current_date = Utc::now().date_naive();
     let from_date = NaiveDate::parse_from_str(date, "%d/%m/%Y").unwrap();
@@ -23,4 +22,16 @@ fn calculate_weeks(date: &str) -> u32 {
     // difference.num_weeks() as u32
 
     return difference.num_weeks() as u32;
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_calculate_weeks() {
+        // this test will fail if the current date is not 01/01/2020
+        assert_eq!(calculate_weeks("01/01/2020"), 209);
+    }
+
 }
