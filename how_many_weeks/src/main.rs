@@ -21,8 +21,7 @@ fn calculate_weeks(from_date: &NaiveDate, to_date: &NaiveDate) -> u32 {
 
     let difference = from_date.signed_duration_since(*to_date);
     std::println!("Difference: {}", difference.num_weeks());
-
-    return difference.num_weeks() as u32;
+    return difference.num_weeks().abs() as u32;
 }
 
 #[cfg(test)]
@@ -32,7 +31,10 @@ mod tests {
     #[test]
     fn test_calculate_weeks() {
         // this test will fail if the current date is not 01/01/2020
-        assert_eq!(calculate_weeks("01/01/2020"), 209);
-    }
+        let from = NaiveDate::parse_from_str("01/01/2020", "%d/%m/%Y").unwrap();
+        let to = NaiveDate::parse_from_str("22/01/2020", "%d/%m/%Y").unwrap();
+        assert_eq!(calculate_weeks(&from, &to), 3);
+
+    } 
 
 }
