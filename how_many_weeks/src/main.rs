@@ -35,6 +35,5 @@ mod tests {
         let to = NaiveDate::parse_from_str("22/01/2020", "%d/%m/%Y").unwrap();
         assert_eq!(calculate_weeks(&from, &to), 3);
 
-    } 
-
+    }
 }
