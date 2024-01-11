@@ -12,9 +12,44 @@
 fn main() {
     println!("LRU Cache Implementation");
 }
-
 struct LRUCache {
     capacity: usize,
     cache: HashMap<i32, i32>,
     queue: Vec<i32>
+}
+
+impl LRUCache {
+    fn new(capacity: usize) -> Self {
+        LRUCache {
+            capacity,
+            cache: HashMap::new(),
+            queue: Vec::new()
+        }
+    }
+
+    fn get(&mut self, key: i32) -> i32 {
+        match self.cache.get(&key) {
+            Some(value) => {
+                self.queue.retain(|&x| x != key);
+                self.queue.push(key);
+                *value
+            },
+            None => -1
+        }
+    }
+
+    fn put(&mut self, key: i32, value: i32) {
+        if self.cache.contains_key(&key) {
+            self.cache.insert(key, value);
+            self.queue.retain(|&x| x != key);
+            self.queue.push(key);
+        } else {
+            if self.cache.len() == self.capacity {
+                let key_to_remove = self.queue.remove(0);
+                self.cache.remove(&key_to_remove);
+            }
+            self.cache.insert(key, value);
+            self.queue.push(key);
+        }
+    }
 }
