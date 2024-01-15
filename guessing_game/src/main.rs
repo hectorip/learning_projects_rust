@@ -63,25 +63,31 @@ fn guessing_game() {
     // Generar número aleatorio
     let secret_number: u32 = rand::thread_rng().gen_range(1..=100);
     println!("Número secreto: {secret_number}");
-    let mut guess = String.new(); 
+    loop {
+        println!("Tu número: ");
+        let mut guess = String::new(); 
     io::stdin()
         .read_line(&mut guess)
-        .expect("Error fatal: no se pudo leer la entrada.")
+        .expect("Error fatal: no se pudo leer la entrada.");
 
-    let guess = match guess.trim().parse() {
-        OK(n) => n,
-        Error(_) => {
-            println!("Introduce un número por favor")
+    let guess: u32 = match guess.trim().parse() {
+        Ok(n) => n,
+        Err(_) => {
+            println!("Introduce un número por favor");
+            continue;
         }
-    }
+    };
 
     match guess.cmp(&secret_number) {
         
-        Ordering::Less => println!("Es más grande");
-        Ordering::Great => println!("Es más pequeño");
-        Ordering::Equal => println!("Ganaste!");
-
-    }
+        Ordering::Less => println!("Es más grande"),
+        Ordering::Greater => println!("Es más pequeño"),
+        Ordering::Equal => {
+            println!("Ganaste!");
+    break;
+        }
+    };
+}
 }
 
 // Path: guessing_game/src/main.rs
