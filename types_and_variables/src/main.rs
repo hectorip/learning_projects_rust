@@ -18,4 +18,11 @@ fn main() {
     let es_mentira = false;
     let es_verdad = true;
     println!("¿Es mentira? {es_mentira} - ¿Es verdad? {es_verdad}");
+    
+    // Flotantes: existen flotantes de 32 y 64 bits
+    
+    let g: f32 = 9.81;
+    let avogadro: f64 = 6.022e23;
+
+    println!("La gravedad es: {g} y el número de Avogadro es: {avogadro}");
 }
