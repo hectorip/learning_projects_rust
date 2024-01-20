@@ -30,14 +30,14 @@ fn main() {
 
     let point_2 = Point{
        x: 2,
-       // ..point // Esto lo haría inválido
-       y: 2,
-       name: String::from(&point.name[..]) // Pero sí podemos copiar la cadena
+       ..point // Esto lo haría inválido
+       //y: 2,
+       // name: String::from(&point.name[..]) // Pero sí podemos copiar la cadena
+       //name: "hola"
     };
 
-    point.name = String::from("Otro nombre");
+    //point.name = String::from("Otro nombre");
     println!("Intentando usar el punto original: {:?}", point);
     println!("Punto nuevo: {:?}", point_2);
-
 
 }
