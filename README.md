@@ -1,8 +1,9 @@
 # Proyectos para aprender Rust
 
-Estos son los ejercicios que voy haciendo siguiendo el libro oficial de Rust.
+Estos son los ejercicios que voy haciendo siguiendo el libro oficial de Rust, junto con
+algunos que hago porque los necesito o se me ocurrieron.
 
-1. hello_world - Lo más básico, un hola mundo.
+1. *hello_world* - Lo más básico, imprimir un hola mundo.
 2. hello_cargo - Un hola mundo usando Cargo.
 3. guessing_game - empezamos a usar las características básicas de Rust.
 4. cpu_simulation - simulación de una CPU con un programa en Rust.
