@@ -27,10 +27,9 @@ fn main() {
 
 #[derive(Debug)]
 struct LRUCache {
-    capacity: usize, // The number of elements the cache can hold
+    capacity: usize,          // The number of elements the cache can hold
     cache: HashMap<i32, i32>, // The key and the index in the queue
     queue: VecDeque<i32>, // We need to remove elemenents from both sides and a double linked list
-    _current_size: usize,
 }
 
 impl LRUCache {
@@ -39,7 +38,6 @@ impl LRUCache {
             capacity,
             cache: HashMap::new(),
             queue: VecDeque::with_capacity(capacity),
-            _current_size: 0,
         }
     }
 
@@ -48,7 +46,7 @@ impl LRUCache {
         match result {
             Some(value) => {
                 self.queue.retain(|&x| x != key); // Remove the key from the queue
-                self.queue.insert(self.capacity - 1, key);
+                self.queue.push_back(self.capacity - 1, key);
                 *value
             }
             None => -1,
