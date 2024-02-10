@@ -4,6 +4,9 @@
 //
 // Una lista doblemente ligada cumple con ese objetivo
 //
+//
+
+use std::fmt::write;
 
 struct Node<'a> {
     value: i32,
@@ -39,6 +42,9 @@ impl<'a> LRUCache<'a> {
     }
     pub fn get(&mut self, key: i32) -> i32 {
         if let Some(node) = self.cache.get(&key) {
+            node.next = self.queue;
+            node.prev.next = node.next;
+            self.queue = Some(node);
             node.value
         } else {
             -1
@@ -53,9 +59,8 @@ impl<'a> LRUCache<'a> {
             }
             self._current_capacity += 1;
             let mut node = Node::new(value);
-            if let Some(queue) = self.queue {
-                node.next = Some(queue)
-            }
+            node.next = self.queue;
+            self.queue = Some(&mut node);
             self.cache.insert(key, node);
         }
         let node = Node::new(value);
