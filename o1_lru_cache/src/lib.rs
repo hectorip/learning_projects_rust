@@ -77,17 +77,7 @@ impl DoubleLinkedList {
         self.head = Some(Rc::clone(&node));
     }
 
-    fn pop_tail(&mut self) -> Option<i32> {
-        let mut tail = self.tail?.borrow_mut();
-        if let Some(prev) = tail.prev.take() {
-            prev.borrow_mut().next = None;
-            self.tail = Some(Rc::clone(&prev));
-        } else {
-            self.head = None;
-            self.tail = None;
-        }
-        return Some(tail.key);
-    }
+    fn pop_tail(&mut self) -> Option<i32> {}
 
     // No necesitamos implementar más funciones porque no las usamos, los nodos
     // se mueven hacia atrás cuando otros nodos son insertados
