@@ -67,22 +67,28 @@ impl DoubleLinkedList {
             if let Some(next) = node.borrow_mut().next.take() {
                 next.borrow_mut().prev = Some(Rc::clone(&prev));
             }
-
         }
-        let next = node.borrow_mut().next.as_ref();
+        // Actualizamos las referencias del nodo
+        // El nodo que estaba al frente ahora es el siguiente
 
-
-        // En otro caso, lo ponermos como el nuevo head
+        let head = self.head.to_owned();
+        node.borrow_mut().next = head;
+        node.borrow_mut().prev = None;
+        self.head = Some(Rc::clone(&node));
     }
+
     fn pop_tail(&mut self) -> Option<Rc<RefCell<Node>>> {
-        if let Some(tail) = self.tail {
-            self.tail = tail.borrow().prev;
-            self.tail.unwrap().borrow_mut().next = None;
-            Some(tail)
+        let tail = self.tail?.borrow_mut();
+        if let Some(prev) = tail.prev.take() {
+            prev.borrow_mut().next = None;
+            self.tail = Some(Rc::clone(&prev));
         } else {
-            None
+            self.head = None;
+            self.tail = None;
         }
+        return Some(Rc::clone(*tail));
     }
+
     // No necesitamos implementar más funciones porque no las usamos, los nodos
     // se mueven hacia atrás cuando otros nodos son insertados
 }
