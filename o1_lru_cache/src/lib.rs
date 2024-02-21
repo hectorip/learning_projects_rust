@@ -63,13 +63,15 @@ impl DoubleLinkedList {
             if Rc::ptr_eq(&self.tail.as_ref().unwrap(), &node) {
                 self.tail = Some(Rc::clone(&prev));
             }
-            // ?=
-            if Some(next) = node.borrow_mut().next.take() {
+            // Si el nodo no es el último, tenemos que actualizar su referencia
+            if let Some(next) = node.borrow_mut().next.take() {
                 next.borrow_mut().prev = Some(Rc::clone(&prev));
             }
-        }
 
+        }
         let next = node.borrow_mut().next.as_ref();
+
+
         // En otro caso, lo ponermos como el nuevo head
     }
     fn pop_tail(&mut self) -> Option<Rc<RefCell<Node>>> {
