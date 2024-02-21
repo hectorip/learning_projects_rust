@@ -77,8 +77,8 @@ impl DoubleLinkedList {
         self.head = Some(Rc::clone(&node));
     }
 
-    fn pop_tail(&mut self) -> Option<Rc<RefCell<Node>>> {
-        let tail = self.tail?.borrow_mut();
+    fn pop_tail(&mut self) -> Option<i32> {
+        let mut tail = self.tail?.borrow_mut();
         if let Some(prev) = tail.prev.take() {
             prev.borrow_mut().next = None;
             self.tail = Some(Rc::clone(&prev));
@@ -86,7 +86,7 @@ impl DoubleLinkedList {
             self.head = None;
             self.tail = None;
         }
-        return Some(Rc::clone(*tail));
+        return Some(tail.key);
     }
 
     // No necesitamos implementar más funciones porque no las usamos, los nodos
@@ -124,8 +124,8 @@ impl LRUCache {
         } else {
             if self._current_capacity >= self.capacity {
                 self._current_capacity -= 1;
-                let node = self.queue.pop_tail().unwrap();
-                self.cache.remove(&node.borrow().key);
+                let key = self.queue.pop_tail().unwrap();
+                self.cache.remove(&key);
             }
             self._current_capacity += 1;
             let node = self.queue.push_front(key, value);
