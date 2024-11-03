@@ -1,7 +1,7 @@
 # Proyectos para aprender Rust
 
 Ejercicios que voy haciendo siguiendo el libro oficial de Rust, junto con
-algunos que hago porque los necesito.
+algunos que hago porque surgió la necesiadad o la curiosidad de hacerlos. 
 
 1. *hello_world* - Lo más básico, imprimir un hola mundo.
 2. hello_cargo - Un hola mundo usando Cargo.
